@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "dev:local": "docker compose -f infra/compose.yaml up -d --force-recreate && next dev",
+    "services:up": "docker compose -f infra/compose.yaml up -d",
+    "services:stop": "docker compose -f infra/compose.yaml stop",
+    "services:down": "docker compose -f infra/compose.yaml down",
+    "services:recreate": "npm run services:down && npm run services:up",
+    "dev:local": "npm run services:up && next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
