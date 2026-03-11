@@ -4,7 +4,7 @@ async function cleanDatabase() {
   await database.query("DROP SCHEMA PUBLIC CASCADE; CREATE SCHEMA PUBLIC;");
 }
 
-beforeAll(cleanDatabase)
+beforeAll(cleanDatabase);
 
 test("Get /api/v1/migrations should return 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/migrations");
@@ -13,4 +13,4 @@ test("Get /api/v1/migrations should return 200", async () => {
   const respBody = await response.json();
   expect(Array.isArray(respBody)).toBe(true);
   expect(respBody.length).toBeGreaterThan(0);
-})
+});
